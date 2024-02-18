@@ -15,9 +15,14 @@ def parse_manifest(file_path):
     with open(file_path, 'r') as file:
         return json.load(file)
 
+def get_nodes_and_sources(manifest):
+    """Get the nodes and sources from the manifest."""
+    return {**manifest['nodes'], **manifest['sources']}
+
 def get_model_from_name(model_name, manifest):
     """Get the model from the manifest."""
-    for id, model in manifest['nodes'].items():
+    nodes_and_sources = get_nodes_and_sources(manifest)
+    for id, model in nodes_and_sources.items():
         if model['name'] == model_name:
             return model
     raise ValueError(f"Model {model_name} not found in the manifest")
@@ -25,8 +30,10 @@ def get_model_from_name(model_name, manifest):
 def get_upstream_models(model_name, manifest):
     """Get the upstream models of a model."""
     model = get_model_from_name(model_name, manifest)
+    nodes_and_sources = get_nodes_and_sources(manifest)
+
     if model:
-        upstrea_models = [manifest['nodes'][model_id] for model_id in model['depends_on']['nodes']]
+        upstrea_models = [nodes_and_sources[model_id] for model_id in model['depends_on']['nodes']]
         return upstrea_models
     return []
 
