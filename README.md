@@ -16,7 +16,10 @@ The tool assumes you have your own OpenAI API key in an environment variable nam
 
 ## Usage
 
-When you are in your dbt project, get a suggestion for a model documentation by running `dbt-autodoc <your-model-name>`.
+When you are in your dbt project, get a suggestion for a model documentation by running 
+```bash
+dbt-autodoc <your-model-name>
+```
 
 ## Roadmap
 
