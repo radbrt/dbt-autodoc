@@ -1,8 +1,14 @@
 # dbt Autodoc
 
-A simple CLI tool to dynamically create model documentation for a given model.
+A simple OpenAI-based CLI tool to dynamically create model documentation for a given model. The basic premise is that once you document your sources, and write your first model, this tool will be able to suggest a `yml` file for your model based on the source(s) and the code. Once that documentation is in place, you can build your next model based on your previous one, and the previously generated documentation together with the new code will be used to generate the documentation for your new model. Using this approach you can follow the DAG of your dbt project and suggest documentation for all models, from left to right. Good documentation begets good documentation.
 
-Unsurprisingly, the tool uses OpenAI to suggest a `yml` file for a given model. It parses the dbt manifest in order to assemble the code for the model as well as the description of the immediate upstream models.
+## How it works
+
+For a given model, the dbt-autodoc parses the dbt manifest, finds the code for the model as well as the documentation of the upstream dependencies. It then sends this information to OpenAI's GPT-4 model, which suggests a `yml` file for the model. The suggested `yml` file is then printed to the console, and optionally written to a file.
+
+The input is always the model code and the documentation for the immediate upstream dependencies. Well-documented upstream models are essential for good results.
+
+You might want to note that the tool does not include macros in the input to the GPT-4 model. That would vastly increase the amount of code passed to the model, and would be unlikely to improve the quality of the suggestions as the output would likely be very code-centric.
 
 ## Installation
 
