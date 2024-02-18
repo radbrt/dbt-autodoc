@@ -5,33 +5,22 @@ import os
 
 def parse_manifest(file_path):
     """Parse the manifest file and return the parsed content."""
+
+    if not os.path.exists('dbt_project.yml'):
+        raise FileNotFoundError(f"dbt_project.yml not found. Are you in the dbt directory?")
+
+    if not os.path.exists(file_path):
+        raise FileNotFoundError(f"dbt manifest not found. Have you run a dbt command such as `dbt run` or `dbt compile`?")
+    
     with open(file_path, 'r') as file:
         return json.load(file)
-    
+
 def get_model_from_name(model_name, manifest):
     """Get the model from the manifest."""
     for id, model in manifest['nodes'].items():
         if model['name'] == model_name:
             return model
     raise ValueError(f"Model {model_name} not found in the manifest")
-
-# def get_column_descriptions(model_name, manifest):
-#     """Get the columns of a model."""
-#     model = get_model_from_name(model_name, manifest)
-#     if model:
-#         for column, content in model['columns'].items():
-#             if 'description' in content:
-#                 yield {column: content['description']}
-#     else:
-#         raise ValueError(f"Model {model_name} not found in the manifest")
-
-# def get_table_descriptions(model_name, manifest):
-#     """Get the tables of a model."""
-#     model = get_model_from_name(model_name, manifest)
-#     if model:
-#         return {model_name: model['description']}
-#     else:
-#         raise ValueError(f"Model {model_name} not found in the manifest")
 
 def get_upstream_models(model_name, manifest):
     """Get the upstream models of a model."""
