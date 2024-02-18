@@ -46,7 +46,7 @@ ddoc <your-model-name> --write
 
 ## Roadmap
 
-This is intended to be a simple too without a lot of bells and whistles. But a few things come to mind:
+This is intended to be a simple tool without a lot of bells and whistles. But a few things come to mind:
 
 - More tests. Because tests are good.
 - Pluggable LLM backend. Because not everyone can use plain OpenAI.
