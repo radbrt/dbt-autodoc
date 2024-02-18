@@ -42,7 +42,7 @@ def autodoc(model, write):
         print(yaml_string)
     else:
         model = get_model_from_name(model, manifest)
-        model_sql_path = model['path']
+        model_sql_path = model['original_file_path']
         yaml_path = model_sql_path.replace('.sql', '.yml')
-        with open(f"models/{yaml_path}", 'w') as f:
+        with open(yaml_path, 'w') as f:
             f.write(yaml_string)
