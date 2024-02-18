@@ -1,6 +1,8 @@
 # dbt Autodoc
 
-A simple OpenAI-based CLI tool to dynamically create model documentation for a given model. The basic premise is that once you document your sources, and write your first model, this tool will be able to suggest a `yml` file for your model based on the source(s) and the code. Once that documentation is in place, you can build your next model based on your previous one, and the previously generated documentation together with the new code will be used to generate the documentation for your new model. Using this approach you can follow the DAG of your dbt project and suggest documentation for all models, from left to right. Good documentation begets good documentation.
+A simple OpenAI-based CLI tool to dynamically create model documentation for a given model. 
+
+The general idea is that this tool can help you document your project one model at the time. Once you document your sources and write your first model, this tool will be able to suggest a `yml` file for your first model based on the source(s) and the code. Once that documentation is in place, you can build your next model based on your previous one, and the previously generated documentation together with the new code will be used to generate the documentation for your new model. Using this approach you can follow the DAG of your dbt project and suggest documentation for all models, from left to right. Good documentation begets good documentation.
 
 ## How it works
 
