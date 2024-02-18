@@ -1,7 +1,8 @@
 import click
 from dbt_autodoc.utils import (
   parse_manifest,
-  generate_docs
+  generate_docs,
+  get_model_from_name
 )
 import os
 from openai import OpenAI
@@ -11,7 +12,8 @@ from ruamel.yaml.comments import CommentedMap
 
 @click.command()
 @click.argument('model', required=True)
-def autodoc(model):
+@click.option('--write', is_flag=True, help='Write the generated documentation to file', default=False)
+def autodoc(model, write):
     """Main dbt-autodoc command entrypoint"""
     if not os.getenv('OPENAI_API_KEY'):
         raise ValueError('OPENAI_API_KEY environment variable not set')
@@ -35,4 +37,12 @@ def autodoc(model):
     yaml.dump(full_data, output_stream)
     yaml_string = output_stream.getvalue()
     output_stream.close()
-    print(yaml_string)
+
+    if not write:
+        print(yaml_string)
+    else:
+        model = get_model_from_name(model, manifest)
+        model_sql_path = model['path']
+        yaml_path = model_sql_path.replace('.sql', '.yml')
+        with open(yaml_path, 'w') as f:
+            f.write(yaml_string)
