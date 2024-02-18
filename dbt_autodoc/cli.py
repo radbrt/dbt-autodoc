@@ -12,7 +12,7 @@ from ruamel.yaml.comments import CommentedMap
 
 @click.command()
 @click.argument('model', required=True)
-@click.option('--write', is_flag=True, help='Write the generated documentation to file', default=False)
+@click.option('--write', '-w', is_flag=True, help='Write the generated documentation to file', default=False)
 def autodoc(model, write):
     """Main dbt-autodoc command entrypoint"""
     if not os.getenv('OPENAI_API_KEY'):

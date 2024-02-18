@@ -16,9 +16,24 @@ The tool assumes you have your own OpenAI API key in an environment variable nam
 
 ## Usage
 
-When you are in your dbt project, get a suggestion for a model documentation by running 
+When you are in your dbt project, get a suggestion for a model documentation by running `dbt-autodoc` or the shorthand alias `ddoc`:
+
 ```bash
 dbt-autodoc <your-model-name>
+```
+
+Or equivalently:
+
+```bash
+ddoc <your-model-name>
+```
+
+This will print the suggested `yml` file to the console. 
+
+If you want to save it to a file directly, you can use the `--write` or `-w` flag. This will write the suggested `yml` file to a `yml` file next to the `sql` file of the model. Make sure to check the file manually though, before committing it to your repository. Not all suggestions make sense, and some modifications are usually in order.
+
+```bash
+ddoc <your-model-name> --write
 ```
 
 ## Roadmap
@@ -27,4 +42,3 @@ This is intended to be a simple too without a lot of bells and whistles. But a f
 
 - More tests. Because tests are good.
 - Pluggable LLM backend. Because not everyone can use plain OpenAI.
-- Option to write model documentation to file. Possibly a really bad idea, but what do I know?
