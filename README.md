@@ -44,6 +44,12 @@ If you want to save it to a file directly, you can use the `--write` or `-w` fla
 ddoc <your-model-name> --write
 ```
 
+## Example
+
+An example of a yaml file suggested by the tool: https://github.com/radbrt/dbt_er/blob/master/models/job_ads/l2/l2_job_ads.yml
+
+This suggestion was based on the upstream dependency (source): https://github.com/radbrt/dbt_er/blob/master/models/job_ads/job_ads_sources.yml, and the model code: https://github.com/radbrt/dbt_er/blob/master/models/job_ads/l2/l2_job_ads.sql
+
 ## Roadmap
 
 This is intended to be a simple tool without a lot of bells and whistles. But a few things come to mind:
