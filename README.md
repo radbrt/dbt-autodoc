@@ -46,9 +46,10 @@ ddoc <your-model-name> --write
 
 ## Example
 
-An example of a yaml file suggested by the tool: https://github.com/radbrt/dbt_er/blob/master/models/job_ads/l2/l2_job_ads.yml
+An example of a yaml file suggested by the tool: https://github.com/radbrt/dbt_er/blob/master/models/job_ads/l2/l2_job_ads.yml. This file was created by running `ddoc l2_job_ads -w`.
 
-This suggestion was based on the upstream dependency (source): https://github.com/radbrt/dbt_er/blob/master/models/job_ads/job_ads_sources.yml, and the model code: https://github.com/radbrt/dbt_er/blob/master/models/job_ads/l2/l2_job_ads.sql
+The suggestion was based on the upstream dependency (source): https://github.com/radbrt/dbt_er/blob/master/models/job_ads/job_ads_sources.yml, and the model code: https://github.com/radbrt/dbt_er/blob/master/models/job_ads/l2/l2_job_ads.sql
+
 
 ## Roadmap
 
