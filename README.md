@@ -1,5 +1,9 @@
 # dbt Autodoc
 
+In order to provide a more consistent UX as it expands, I have ported the functionality to a new `dbtai` CLI tool: https://github.com/radbrt/dbtai. Existing functionality has been maintained in the new library, simply replace `dbt-autodoc <model>` with `dbtai doc <model>` and you are good to go.
+
+This project probably won't see any
+
 A simple OpenAI-based CLI tool to dynamically create model documentation for a given model. 
 
 The general idea is that this tool can help you document your project one model at the time. Once you document your sources and write your first model, this tool will be able to suggest a `yml` file for your first model based on the source(s) and the code. Once that documentation is in place, you can build your next model based on your previous one, and the previously generated documentation together with the new code will be used to generate the documentation for your new model. Using this approach you can follow the DAG of your dbt project and suggest documentation for all models, from left to right. Good documentation begets good documentation.
